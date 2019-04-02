@@ -1,5 +1,5 @@
 # Plotly GP functions
-Functions for creating GP-regression plots using plotly and GP data (mean, variance, samples etc..)
+GPPlotly/GPPlotly.py contains some functions for creating GP-regression plots using plotly and GP data (mean, variance, samples etc..)
 
 #### 2D regression plots
 ```
