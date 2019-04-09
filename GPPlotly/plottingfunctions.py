@@ -1,5 +1,5 @@
 import numpy as np
-import scipy
+import scipy.stats
 import plotly
 import plotly.graph_objs as go
 
