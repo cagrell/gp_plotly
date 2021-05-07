@@ -518,10 +518,10 @@ def gp_diagnostics(data, y_name, plot_labels = {}, subplots = True):
     
     # Name of inputs and outputs
     outputnames = [y_name + sub for sub in ['_true', '_mean', '_var']]
-    inputnames = [name for name in data.columns.get_values() if not name in outputnames]
+    inputnames = [name for name in data.columns if not name in outputnames]
     
     # Check that output is specified correctly 
-    if not all(name in data.columns.get_values() for name in outputnames):
+    if not all(name in data.columns for name in outputnames):
         print('Error: data must contain the following columns for the output named ' + y_name)
         print(outputnames)
         return 0
@@ -535,7 +535,7 @@ def gp_diagnostics(data, y_name, plot_labels = {}, subplots = True):
     
     # Create complete dict for all plot axis labels
     dict_varnames = plot_labels
-    for name in data.columns.get_values():
+    for name in data.columns:
         if not name in dict_varnames.keys():
             dict_varnames[name] = name
             
@@ -576,7 +576,7 @@ def gp_diagnostics(data, y_name, plot_labels = {}, subplots = True):
     
     else:
         # 1. Figure with QQ and pred vs error
-        fig1 = plotly.tools.make_subplots(rows=1, cols=2, 
+        fig1 = plotly.subplots.make_subplots(rows=1, cols=2, 
                                  subplot_titles=('Prediction vs test', 'Standardised errors QQ'), print_grid=False)
 
         for trace in fig_qq['data']:
@@ -601,7 +601,7 @@ def gp_diagnostics(data, y_name, plot_labels = {}, subplots = True):
         numplots = len(figs_errorscatter)
         numrows = int(np.ceil(numplots/numcols))
 
-        fig3 = plotly.tools.make_subplots(rows=numrows, cols=numcols, print_grid=False)
+        fig3 = plotly.subplots.make_subplots(rows=numrows, cols=numcols, print_grid=False)
 
         index = -1
         for i in range(numcols):
